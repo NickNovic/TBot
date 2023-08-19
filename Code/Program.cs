@@ -1,2 +1,15 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using System;
+using Code.Singletones;
+using Telegram.Bot;
+using Telegram.Bot.Types;
+
+namespace Code
+{
+    class Rrogram
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+        }
+    }
+}
