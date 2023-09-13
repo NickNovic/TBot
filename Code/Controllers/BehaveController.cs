@@ -32,16 +32,13 @@ namespace Code.Controllers
         public static async Task<Message> StartBot(Message message)
         {
             TelegramBotClient client = new TelegramBotClient(Singletones.GlobalValues.Token);
-            //Переписать на получение нормальных кнопок из отдельного контроллера
 
-            var rkm = new ReplyKeyboardMarkup(new List<List<KeyboardButton>>
-                {
-                    new List<KeyboardButton>{
-                        new KeyboardButton("АДЫН"), new KeyboardButton("ДУА")},
-                    new List<KeyboardButton>{
-                        new KeyboardButton("ТРЫ"), new KeyboardButton("ЧЫТЫРЫ")}
-                });
-            return await client.SendTextMessageAsync(message.Chat.Id, "STARTING TEXT", replyMarkup: rkm);
+            var rkm = MenuController.GetStartupMenu();
+            var startingText = TextController.GetStartupText();
+            UserController.RegisterUser(message);
+            
+
+            return await client.SendTextMessageAsync(message.Chat.Id, startingText, replyMarkup: rkm);
         }
     }
 }
